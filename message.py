@@ -4,12 +4,12 @@
 import pymysql
 
 def message():
-    print 'input number 15151863768 .'
+   # print 'input number 15151863768 .'
 
     conn=pymysql.connect(host='99.48.66.40',user='root',passwd='1qaz@WSX',db='me_notification_uat',charset='utf8')
     # uat环境中的，sit环境的ip我不知道。
     cur=conn.cursor()
-    cur.execute("SELECT content,createtime from SMS_HISTORY where phoneNo ='15151863768' ORDER BY createTime ")
+    cur.execute("SELECT content,createtime from SMS_HISTORY where phoneNo ='15151863766' ORDER BY createTime ")
     # 修改一下phoneno
     for i in cur:
          message = i

@@ -79,13 +79,13 @@ def delete():
         conn.commit()
         cur.close()
         conn.close()
+        print 'delete  ok'
 
     except:
         print 'something errer happened!!!'
         conn.rollback()
         cur.close()
         conn.close()
-    print 'delete  ok'
 if __name__ == "__main__":
     delete()
 

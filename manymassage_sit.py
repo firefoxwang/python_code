@@ -4,7 +4,7 @@
 import pymysql
 
 def message():
-    print 'input number 15151863768 .'
+    # print 'input number 15151863768 .'
     a = 50
     conn=pymysql.connect(host='99.48.66.40',user='root',passwd='1qaz@WSX',db='me_notification',charset='utf8')
     #uat环境中的，sit环境的ip我不知道。
