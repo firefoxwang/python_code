@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 import pyodbc
 import time
@@ -44,9 +44,8 @@ def lend():
     str_amt = str(transfer_amt)
 
     cur.execute("EXEC FSS.USP_TRANSFER_RESULT_UPDATE    @TRANSFER_SN = %r,   @PROCESS_RESULT = '10' ,@RESULT_AMT = %.2f,  @DEALER = 'MANUL' , @DEAL_ID =%r, @DEAL_TIME = '2016-09-01 17:44:19' ,@ERROR_MSG = '' "%(transfer_sn,float_amt,str_amt))
-    #print "EXEC FSS.USP_TRANSFER_RESULT_UPDATE    @TRANSFER_SN = %r,   @PROCESS_RESULT = '10' ,@RESULT_AMT = %.2f,  @DEALER = 'MANUL' , @DEAL_ID =%r, @DEAL_TIME = '2016-09-01 17:44:19' ,@ERROR_MSG = '' "%(transfer_sn,float_amt,str_amt)
     # 一直找不到错误，原来错误是因为 transfer_amt从数据库中取出来的时候是decimal('1900.00')的格式。实际上即使用python插入decimal格式也不行，插入float格式就可以的。所以从数据库中拿出来数据，全部改掉，再重新插进来
-    #里面的deal_time有空改成Python获取的当前时间吧 ，有空再说
+    #里面的deal_time有空改成Python获取的当前时间
     conn.commit()
     cur.close()
     conn.close()
@@ -55,3 +54,4 @@ def lend():
          
 if __name__ == "__main__":
     lend()
+# lend.py 用于放款，输入memberid就可以处理还款了。
