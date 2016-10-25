@@ -15,6 +15,14 @@ def delete():
         memberid_int = result[0]
         memberid = str(result[0])
         nickname = result[1]
+        # 这下面是我自己加的数据，应该跟c征啥的有关系
+        cur.execute("select appl_no from memedaidb.appl.a_appl where member_id = %r" % memberid)
+        results = cur.fetchall()
+        for i in results:
+            print "appl_no is", i[0]
+            appl_no = str(i[0])
+            cur.execute("delete from appl.A_APPL_C_EXT where APPL_NO =%r" % appl_no)  # 因为这里面有cur指针，所以for循环里面要注意
+
 
         cur.execute(
             "delete from appl.a_token where appl_no in (select appl_no from appl.a_appl where mobile=%r)" % mobile)
@@ -69,18 +77,10 @@ def delete():
         cur.execute("DELETE FROM watson.crm.INQUIRY where mobile= %r" % mobile)
         cur.execute("DELETE FROM [memedaidb].crm.MEMBER_WECHAT where NICKNAME= %r" % nickname)
 
-        # 这下面是我自己加的数据，应该跟c征啥的有关系
-        cur.execute("select appl_no from memedaidb.appl.a_appl where member_id = %r" % memberid)
-        for i in cur:
-            print "appl_no is", i[0]
-            appl_no = str(i[0])
-            cur.execute("delete from appl.A_APPL_C_EXT where APPL_NO =%r" % appl_no)
-
         conn.commit()
         cur.close()
         conn.close()
         print 'delete  ok'
-
     except:
         print 'something errer happened!!!'
         conn.rollback()
