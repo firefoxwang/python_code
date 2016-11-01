@@ -11,7 +11,7 @@ def delete():
 
         result = cur.fetchone()
         print 'memberid is ', result[0]
-        print 'nickname is', result[1]
+        print 'nickname is', result[1].decode('gb2312').encode('utf-8')
         memberid_int = result[0]
         memberid = str(result[0])
         nickname = result[1]
