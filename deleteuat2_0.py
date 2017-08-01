@@ -5,7 +5,7 @@ def delete():
     print 'input your mobile,please'
     mobile = raw_input()
     conn = pyodbc.connect(
-        'DRIVER={SQL Server};SERVER=99.48.66.12;DATABASE=memedaidb;UID=daoqing.zha;PWD=mime@123;charset = utf-8')
+        'DRIVER={SQL Server};SERVER=99.48.66.12;DATABASE=memedfsddaidb;UID=daoqing.zha;PWD=dfd@123;charset = utf-8')
     cur = conn.cursor()
     conn2 = pymysql.connect(host='99.48.66.40',user='root',passwd='1qaz@WSX',charset='utf8')
     cur2 = conn2.cursor()
