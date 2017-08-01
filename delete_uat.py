@@ -4,7 +4,7 @@ def delete():
     print 'input your mobile,please'
     mobile = raw_input()
     conn = pyodbc.connect(
-        'DRIVER={SQL Server};SERVER=99.48.66.12;DATABASE=memedaidb;UID=daoqing.zha;PWD=mime@123;charset = utf-8')
+        'DRIVER={SQL Server};SERVER=99.48.66.12;DATABASE=memfsfedaidb;UID=daoqing.zha;PWD=mimfsdfe@123;charset = utf-8')
     cur = conn.cursor()
     try:
         cur.execute("select member_id,wc_nickname from memedaidb.appl.a_appl where mobile = %r" % mobile)
